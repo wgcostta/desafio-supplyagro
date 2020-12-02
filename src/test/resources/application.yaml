@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: false
+        temp:
+          use_jdbc_metadata_defaults: false
+  flyway:
+    enabled: true
+#    locations:
+#      -
+  main:
+    allow-bean-definition-overriding: true
+server:
+  compression:
+    enabled: true
