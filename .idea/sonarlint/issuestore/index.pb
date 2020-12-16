@@ -13,3 +13,17 @@ Osrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/Application.java
 wsrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/unidadeadministrativa/dominio/UnidadeAdministrativa.java,1\2\127a9170832e3539e8d952e4c76863d23abc4724
 ë
 asrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/api/FazendaController.java,b\1\b1eb65001cce57078f0b37ae63940310dae7bc2a
+é
+^src/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/api/FazendaRequest.java,b\1\b1e5bbdf3a1df8f46abcdbb9a94a4e4bffbb02f7
+ä
+Zsrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/api/FazendaDTO.java,f\0\f0bf7ef71a102735ddf45383c41078292220c309
+Ö
+Usrc/test/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/FazendaIT.java,a\0\a0ab807e4d54bf780dbcf7446952beceff69bb47
+è
+_src/test/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/dominio/FazendaTest.java,0\e\0e9f9d90b9d35aca00b06aa1abb0469a952247bc
+å
+\src/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/dominio/Endereco.java,6\8\68d95582626bbbe7689b0308673d24423507f7cd
+ï
+esrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/dominio/FazendaRepository.java,5\e\5e2179c0a98ea4e2df1b7619fe84af0d3deaf499
+î
+dsrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/fazenda/api/FazendaRequestUpdate.java,0\c\0c3333c03514576f1fc43f56c0d6341aaa8edd73

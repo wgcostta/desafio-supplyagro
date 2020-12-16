@@ -1,10 +1,8 @@
 package com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api;
 
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.exceptions.FazendaNaoEncontradaException;
-import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.validacoes.UnidadeAdministrativaHabilitadoValidator;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.Fazenda;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.FazendaRepository;
-import com.totvs.supplyagro.projetoreferencia.cadastros.unidadeadministrativa.dominio.UnidadeAdministrativaRepository;
 import com.totvs.tjf.api.context.stereotype.ApiGuideline;
 import com.totvs.tjf.api.context.v2.request.ApiFieldRequest;
 import com.totvs.tjf.api.context.v2.request.ApiPageRequest;
@@ -16,7 +14,6 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,13 +29,6 @@ import java.util.stream.Collectors;
 public class FazendaController {
 
     private final FazendaRepository repository;
-    private final UnidadeAdministrativaRepository unidadeAdministrativaRepository;
-    private final UnidadeAdministrativaHabilitadoValidator unidadeAdministrativaHabilitadoValidator;
-
-    @InitBinder("fazendaRequest")
-    public void initBinders(WebDataBinder webDataBinder) {
-        webDataBinder.addValidators(unidadeAdministrativaHabilitadoValidator);
-    }
 
     @GetMapping
     @ApiOperation("Busca todas as Fazendas")
@@ -55,7 +45,7 @@ public class FazendaController {
     @ApiOperation("Cadastra uma Fazenda")
     @Transactional
     public ResponseEntity<FazendaDTO> cadastrar(@Valid @RequestBody FazendaRequest fazendaRequest) {
-        Fazenda fazenda = fazendaRequest.toModel(unidadeAdministrativaRepository);
+        Fazenda fazenda = fazendaRequest.toModel();
         repository.save(fazenda);
         return ResponseEntity.ok(FazendaDTO.from(fazenda));
     }
@@ -63,13 +53,10 @@ public class FazendaController {
     @PutMapping(path = "/{id}")
     @ApiOperation("Altera uma Fazenda")
     @Transactional
-    public ResponseEntity<FazendaDTO> alterar(@PathVariable("id") UUID id, @Valid @RequestBody FazendaRequest fazendaRequest) {
-        if (!repository.existsById(id)) {
-            throw new FazendaNaoEncontradaException(id);
-        }
-        Fazenda fazenda = fazendaRequest.toModel(unidadeAdministrativaRepository);
-        fazenda.setId(id);
-        repository.save(fazenda);
+    public ResponseEntity<FazendaDTO> alterar(@PathVariable("id") UUID id, @Valid @RequestBody FazendaRequestUpdate fazendaRequest) {
+        Fazenda fazenda = repository.findById(id).orElseThrow(() -> new FazendaNaoEncontradaException(id));
+        fazenda.alterar(fazendaRequest.getDescricao());
+        repository.saveAndFlush(fazenda);
         return ResponseEntity.ok(FazendaDTO.from(fazenda));
     }
 

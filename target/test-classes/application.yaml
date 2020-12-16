@@ -1,12 +1,7 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/cadastros
-    username: postgres
-    password: postgres
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    generate-ddl: true
+    generate-ddl: false
     hibernate:
       ddl-auto: none
     properties:
@@ -16,14 +11,11 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
   flyway:
-    enabled: false
+    enabled: true
+#    locations:
+#      -
   main:
     allow-bean-definition-overriding: true
 server:
   compression:
     enabled: true
-tjf:
-  api:
-    filter:
-      fields:
-        enabled: true
