@@ -1,14 +1,11 @@
 package com.totvs.supplyagro.projetoreferencia.cadastros.talhao.api.validacoes;
 
-import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.FazendaRequest;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.exceptions.FazendaNaoEncontradaException;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.Fazenda;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.FazendaRepository;
 import com.totvs.supplyagro.projetoreferencia.cadastros.talhao.api.TalhaoRequest;
 import com.totvs.supplyagro.projetoreferencia.cadastros.talhao.api.exceptions.TalhaoDuplicadoFazendaException;
-import com.totvs.supplyagro.projetoreferencia.cadastros.talhao.dominio.Talhao;
 import com.totvs.supplyagro.projetoreferencia.cadastros.talhao.dominio.TalhaoRepository;
-import com.totvs.supplyagro.projetoreferencia.cadastros.unidadeadministrativa.dominio.UnidadeAdministrativaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

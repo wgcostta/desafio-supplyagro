@@ -6,8 +6,6 @@ import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.FazendaReque
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.Endereco;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.Fazenda;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.FazendaRepository;
-import com.totvs.supplyagro.projetoreferencia.cadastros.unidadeadministrativa.dominio.UnidadeAdministrativa;
-import com.totvs.supplyagro.projetoreferencia.cadastros.unidadeadministrativa.dominio.UnidadeAdministrativaRepository;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -44,8 +42,8 @@ class FazendaIT {
     private ObjectMapper objectMapper;
     @Autowired
     private FazendaRepository fazendaRepository;
-    @Autowired
-    private UnidadeAdministrativaRepository unidadeAdministrativaRepository;
+//    @Autowired
+//    private UnidadeAdministrativaRepository unidadeAdministrativaRepository;
 
     @Test
     @DisplayName("Deve cadastrar uma fazenda corretamente")

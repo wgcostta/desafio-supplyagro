@@ -1,7 +1,6 @@
 package com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio;
 
-import com.totvs.supplyagro.projetoreferencia.cadastros.unidadeadministrativa.dominio.UnidadeAdministrativa;
-import com.totvs.supplyagro.projetoreferencia.cadastros.unidadeadministrativa.exceptions.UnidadeAdministrativaDesabilitadaException;
+import com.totvs.supplyagro.projetoreferencia.cadastros.talhao.api.exceptions.TalhaoDuplicadoFazendaException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -29,7 +28,7 @@ class FazendaTest {
         Endereco endereco = new Endereco("Unidade", "Assis","Rua Leonor");
         Set<Endereco> enderecos = new HashSet<Endereco>();
         enderecos.add(endereco);
-        Assertions.assertThrows(UnidadeAdministrativaDesabilitadaException.class, () ->
+        Assertions.assertThrows(TalhaoDuplicadoFazendaException.class, () ->
                 new Fazenda("Fazenda", "24.171.513/0001-23", enderecos));
     }
 }
