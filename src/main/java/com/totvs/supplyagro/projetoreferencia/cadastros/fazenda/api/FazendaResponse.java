@@ -8,14 +8,14 @@ import java.util.Set;
 import java.util.UUID;
 
 @Data
-public class FazendaDTO {
+public class FazendaResponse {
     private final UUID id;
     private final String descricao;
     private final String cnpj;
     private final Set<Endereco> enderecos;
 
-    public static FazendaDTO from(Fazenda fazenda) {
-        return new FazendaDTO(
+    public static FazendaResponse from(Fazenda fazenda) {
+        return new FazendaResponse(
                 fazenda.getId(),
                 fazenda.getDescricao(),
                 fazenda.getCnpj(),

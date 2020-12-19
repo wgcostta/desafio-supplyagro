@@ -1,8 +1,5 @@
 package com.totvs.supplyagro.projetoreferencia.cadastros.talhao.api;
 
-import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.FazendaDTO;
-import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.FazendaRequest;
-import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.FazendaRequestUpdate;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.api.exceptions.FazendaNaoEncontradaException;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.Fazenda;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.FazendaRepository;
@@ -42,7 +39,6 @@ public class TalhaoController {
         webDataBinder.addValidators(talhaoValidator);
     }
 
-
     @GetMapping
     @ApiOperation("Busca todos os Talhões")
     public ApiCollectionResponse<TalhaoResponse> buscaTodos(ApiFieldRequest fieldRequest, ApiPageRequest pageRequest, ApiSortRequest sortRequest) {
@@ -66,11 +62,11 @@ public class TalhaoController {
         return ResponseEntity.ok(TalhaoResponse.from(talhao));
     }
 
-    @PutMapping(path = "/{id}")
+    @PutMapping()
     @ApiOperation("Altera um Talhao")
     @Transactional
-    public ResponseEntity<TalhaoResponse> alterar(@PathVariable("id") UUID id, @Valid @RequestBody EditTalhaoRequest talhaoRequest) {
-        Talhao talhao = repository.findById(id).orElseThrow(() -> new TalhaoNaoEncontradoException(id));
+    public ResponseEntity<TalhaoResponse> alterar(@Valid @RequestBody EditTalhaoRequest talhaoRequest) {
+        Talhao talhao = repository.findById(talhaoRequest.getId()).orElseThrow(() -> new TalhaoNaoEncontradoException(talhaoRequest.getId()));
         talhao.alterar(talhaoRequest);
         repository.save(talhao);
         return ResponseEntity.ok(TalhaoResponse.from(talhao));

@@ -23,10 +23,12 @@ public class Fazenda {
     @GeneratedValue
     @Setter
     private UUID id;
+
     @Setter
     @NotNull
     @Max(200)
     private String descricao;
+
     @NotNull
     private String cnpj;
 

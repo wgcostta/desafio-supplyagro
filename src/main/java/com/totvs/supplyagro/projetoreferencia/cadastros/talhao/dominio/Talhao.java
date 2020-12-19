@@ -1,5 +1,7 @@
 package com.totvs.supplyagro.projetoreferencia.cadastros.talhao.dominio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.totvs.supplyagro.projetoreferencia.cadastros.evento.dominio.Evento;
 import com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio.Fazenda;
 import com.totvs.supplyagro.projetoreferencia.cadastros.talhao.api.EditTalhaoRequest;
 import lombok.*;
@@ -7,6 +9,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -43,6 +46,10 @@ public class Talhao {
     @ManyToOne
     @Setter
     private Fazenda fazenda;
+
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "talhao", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<Evento> eventos;
 
     public void alterar(EditTalhaoRequest talhaoRequest) {
         this.produtivade = talhaoRequest.getProdutivade();

@@ -4,10 +4,10 @@ import com.totvs.tjf.api.jpa.repository.ApiJpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.Set;
 import java.util.UUID;
 
 public interface TalhaoRepository extends CrudRepository<Talhao, UUID>, ApiJpaRepository<Talhao> {
+
     @Query(
             value = "select count(*) \n" +
                     "from talhao \n" +

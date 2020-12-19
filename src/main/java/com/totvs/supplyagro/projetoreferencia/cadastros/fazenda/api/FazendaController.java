@@ -8,6 +8,7 @@ import com.totvs.tjf.api.context.v2.request.ApiFieldRequest;
 import com.totvs.tjf.api.context.v2.request.ApiPageRequest;
 import com.totvs.tjf.api.context.v2.request.ApiSortRequest;
 import com.totvs.tjf.api.context.v2.response.ApiCollectionResponse;
+import com.totvs.tjf.core.api.context.request.ApiExpandRequest;
 import com.totvs.tjf.core.api.jpa.repository.ApiJpaCollectionResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,32 +33,41 @@ public class FazendaController {
 
     @GetMapping
     @ApiOperation("Busca todas as Fazendas")
-    public ApiCollectionResponse<FazendaDTO> buscaTodos(ApiFieldRequest fieldRequest, ApiPageRequest pageRequest, ApiSortRequest sortRequest) {
+    public ApiCollectionResponse<FazendaResponse> buscaTodos(ApiFieldRequest fieldRequest, ApiPageRequest pageRequest, ApiSortRequest sortRequest) {
         ApiJpaCollectionResult<Fazenda> fazendasPage = repository.findAll(pageRequest, sortRequest);
-        List<FazendaDTO> fazendas = fazendasPage.getItems()
+        List<FazendaResponse> fazendas = fazendasPage.getItems()
                 .stream()
-                .map(FazendaDTO::from)
+                .map(FazendaResponse::from)
                 .collect(Collectors.toList());
         return ApiCollectionResponse.of(fazendas, fazendasPage.hasNext());
+    }
+
+    @GetMapping(path = "/{id}")
+    @ApiOperation("Busca determinado Fazenda pelo ID")
+    @javax.transaction.Transactional
+    public ResponseEntity<FazendaResponse> buscarUnico(@PathVariable("id") UUID id, ApiExpandRequest expand) {
+        Fazenda fazenda = repository.findById(id)
+                .orElseThrow(() -> new FazendaNaoEncontradaException(id));
+        return ResponseEntity.ok(FazendaResponse.from(fazenda));
     }
 
     @PostMapping
     @ApiOperation("Cadastra uma Fazenda")
     @Transactional
-    public ResponseEntity<FazendaDTO> cadastrar(@Valid @RequestBody FazendaRequest fazendaRequest) {
+    public ResponseEntity<FazendaResponse> cadastrar(@Valid @RequestBody FazendaRequest fazendaRequest) {
         Fazenda fazenda = fazendaRequest.toModel();
         repository.save(fazenda);
-        return ResponseEntity.ok(FazendaDTO.from(fazenda));
+        return ResponseEntity.ok(FazendaResponse.from(fazenda));
     }
 
     @PutMapping(path = "/{id}")
     @ApiOperation("Altera uma Fazenda")
     @Transactional
-    public ResponseEntity<FazendaDTO> alterar(@PathVariable("id") UUID id, @Valid @RequestBody FazendaRequestUpdate fazendaRequest) {
+    public ResponseEntity<FazendaResponse> alterar(@PathVariable("id") UUID id, @Valid @RequestBody FazendaRequestUpdate fazendaRequest) {
         Fazenda fazenda = repository.findById(id).orElseThrow(() -> new FazendaNaoEncontradaException(id));
         fazenda.alterar(fazendaRequest.getDescricao());
         repository.saveAndFlush(fazenda);
-        return ResponseEntity.ok(FazendaDTO.from(fazenda));
+        return ResponseEntity.ok(FazendaResponse.from(fazenda));
     }
 
     @DeleteMapping(path = "/{id}")
