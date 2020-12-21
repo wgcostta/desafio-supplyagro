@@ -1,7 +1,11 @@
 
-]
-java:S1854";Remove this useless assignment to local variable "fazenda".(À üÿÿÿÿ8ê¹åîæ.
 N
-java:S1481",Remove this unused "fazenda" local variable.(À üÿÿÿÿ8ê¹åîæ.
-L
-java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8Á’Áïæ.
+java:S1481'",Remove this unused "fazenda" local variable.(À üÿÿÿÿ8ê¹åîæ.
+r
+java:S1128"PRemove this unused import 'com.totvs.tjf.api.context.v2.request.ApiPageRequest'.(ıÔ‡Ğûÿÿÿÿ8˜Ï–Äç.
+]
+java:S1854'";Remove this useless assignment to local variable "fazenda".(À üÿÿÿÿ8ê¹åîæ.
+c
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8âÃ›Äç.
+€
+java:S1128"cRemove this unused import 'com.totvs.supplyagro.projetoreferencia.cadastros.evento.dominio.Evento'.(ÊÄŒÎ8âÃ›Äç.

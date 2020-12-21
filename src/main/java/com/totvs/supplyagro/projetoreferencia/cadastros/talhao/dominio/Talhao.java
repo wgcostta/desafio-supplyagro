@@ -18,6 +18,7 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode
 @AllArgsConstructor
+@RequiredArgsConstructor
 @Table(name="talhao")
 public class Talhao {
 

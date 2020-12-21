@@ -55,3 +55,15 @@ Ysrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/evento/dominio/E
 \src/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/evento/api/EventoRequest.java,1\2\125f1b8c36fb12e0c9d997124d1c89ca24ff7212
 è
 _src/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/evento/api/EventoController.java,8\7\8756f5f77213f10dd9ee361da990964dcb2ba18f
+≠
+}src/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/talhao/api/exceptions/TalhaoComEventosVinculadosException.java,e\9\e948a158b19433cca7bbe89c84537e9df7e1b5f6
+®
+xsrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/evento/api/exceptions/EventoPlantioExcedidoException.java,d\b\db3474c3d848e413d8364defdd184a4d4d0c96f9
+¢
+rsrc/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/evento/api/exceptions/EventoEncerradoException.java,e\5\e58e4d13bac5ae228d9bd66b11e4e2f7ef81904e
+é
+^src/main/java/com/totvs/supplyagro/projetoreferencia/cadastros/evento/api/EventoValidator.java,0\2\022d65a719c77f30b2dea58cc2604e07d11021d3
+ç
+]src/test/java/com/totvs/supplyagro/projetoreferencia/cadastros/talhao/dominio/TalhaoTest.java,7\2\7239a096f4b6a9f318f08b31221c3b7f51c5de23
+ç
+]src/test/java/com/totvs/supplyagro/projetoreferencia/cadastros/evento/dominio/EventoTest.java,a\d\add12d322b0b0c425d051eef255623139e624df3

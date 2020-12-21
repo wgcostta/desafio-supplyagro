@@ -1,6 +1,5 @@
 package com.totvs.supplyagro.projetoreferencia.cadastros.fazenda.dominio;
 
-import com.totvs.supplyagro.projetoreferencia.cadastros.talhao.api.exceptions.TalhaoDuplicadoFazendaException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,22 +12,22 @@ import java.util.Set;
 class FazendaTest {
 
     @Test
-    @DisplayName("Criar uma fazenda com uma unidade habilitada")
-    void criarComUnidadeHabilitada() {
-        Endereco endereco = new Endereco("Unidade", "Assis","Rua Leonor");
+    @DisplayName("Criar uma fazenda com um endereço")
+    void criarComEndereço() {
+        Endereco endereco = new Endereco("Assis", "SP","Rua Leonor");
         Set<Endereco> enderecos = new HashSet<Endereco>();
         enderecos.add(endereco);
         Fazenda fazenda = new Fazenda("Fazenda", "24.171.513/0001-23", enderecos);
         Assertions.assertNotNull(fazenda);
     }
 
-    @Test
-    @DisplayName("Uma fazenda não pode ser criada com uma unidade desabilitada")
-    void unidadeDesabilitada() {
-        Endereco endereco = new Endereco("Unidade", "Assis","Rua Leonor");
-        Set<Endereco> enderecos = new HashSet<Endereco>();
-        enderecos.add(endereco);
-        Assertions.assertThrows(TalhaoDuplicadoFazendaException.class, () ->
-                new Fazenda("Fazenda", "24.171.513/0001-23", enderecos));
-    }
+//    @Test
+//    @DisplayName("Uma fazenda não pode ser criada com uma unidade desabilitada")
+//    void unidadeDesabilitada() {
+//        Endereco endereco = new Endereco("Unidade", "Assis","Rua Leonor");
+//        Set<Endereco> enderecos = new HashSet<Endereco>();
+//        enderecos.add(endereco);
+//        Assertions.assertThrows(TalhaoDuplicadoFazendaException.class, () ->
+//                new Fazenda("Fazenda", "24.171.513/0001-23", enderecos));
+//    }
 }
